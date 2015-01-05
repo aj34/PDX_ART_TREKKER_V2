@@ -1,0 +1,17 @@
+<ion-view title="Pdx Art Trekker Map">
+  <ion-content scroll="false" class="main-map">
+    <div class="legend">
+      <ion-checkbox class='checkbox-royal'
+                    ng-model="map.model.isArtShowing"
+                    ng-change="map.toggleArtMarkers( )">Public Art</ion-checkbox>
+      <ion-checkbox class='checkbox-royal'
+                    ng-model="map.model.isPlacesShowing"
+                    ng-change="map.togglePlacesMarkers()">Galleries</ion-checkbox>
+    </div>
+
+
+    <map on-create="mapCreated(map)" map-options="mapOptions" data-tap-disabled="true"></map>
+
+
+  </ion-content>
+</ion-view>

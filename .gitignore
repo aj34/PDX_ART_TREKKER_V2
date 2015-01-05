@@ -1,0 +1,16 @@
+node_modules
+www
+.tmp
+.sass-cache
+app/lib
+coverage
+platforms
+plugins
+.idea
+resources/android
+*.swp
+*.swo
+*.log
+*.DS_Store
+
+app/utils/config.js

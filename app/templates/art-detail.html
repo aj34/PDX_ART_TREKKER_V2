@@ -1,0 +1,72 @@
+<ion-view title="Details" class="art-details" >
+<!--  <ion-nav-buttons side="right">
+    <button class="fab" ng-click="toggleFab()" ng-show="!isFavorite"><i class="icon ion-star"></i></button>
+    <button class="fab2" ng-click="toggleFab()" ng-show="isFavorite"><i class="icon ion-minus"></i></button>
+
+
+    <md-button class="md-fab" md-theme="theme"  aria-label="Add to Fav" ng-click="toggleFab()"
+               ng-class="{ 'md-primary': isFavorite, 'md-accent': !isFavorite}">
+      <i class="icon ion-star"></i></button>
+    </md-button>
+
+  </ion-nav-buttons>-->
+
+
+  <ion-content>
+
+    <div class="list card">
+
+      <button ng-class="{ 'fab-positive': m.isFavorite, 'fab-negative': !m.isFavorite }" ng-click="m.toggleFab()"><i class="icon ion-star"></i></button>
+
+      <div class="item item-avatar">
+        <img src="{{::m.art.marker}}">
+        <h2>{{::m.art.title}}</h2>
+        <p>{{::m.art.artist}}</p>
+      </div>
+
+      <div class="item item-divider details-image">
+          <img ng-src="{{::m.art.image_url_large}}">
+      </div>
+
+      <div class="item item-body content">
+        <div ng-show="m.art.medium"><strong>Medium: </strong>{{::m.art.medium}}</div>
+        <div ng-show="m.art.discipline"><strong>Discipline: </strong>{{::m.art.discipline}}</div>
+        <div ng-show="m.art.dimensions"><strong>Dimensions: </strong>{{::m.art.dimensions}}</div>
+        <div ng-show="m.art.date"><strong>Date: </strong>{{::m.art.date}}</div>
+        <div ng-show="m.art.funding_source"><strong>Funding Source: </strong>{{::m.art.funding_source}}</div>
+
+        <p>
+          {{::m.art.description}}
+        </p>
+
+      </div>
+
+      <div class="item item-divider">
+        <table>
+          <tr>
+            <td><strong>Location:</strong></td>
+            <td>{{::m.art.location}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td ng-show="m.art.location !== m.art.street">{{::m.art.street}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{::m.art.city}}, {{::m.art.state}}  {{::m.art.zipcode}}</td>
+          </tr>
+        </table>
+
+        <map on-create="mapCreated(map)" map-options="mapOptions" data-tap-disabled="true"></map>
+      </div>
+
+
+
+     </div>
+
+    <div class="spacer"></div>
+
+  </ion-content>
+</ion-view>
+
+

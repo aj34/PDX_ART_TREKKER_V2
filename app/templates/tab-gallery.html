@@ -1,0 +1,55 @@
+<ion-view title="{{g.model.title}}" class="gallery">
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-navicon"
+            ng-click="g.showMenu()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear icon ion-trash-b"
+            ng-show="g.model.showDeleteButton && g.model.artworks.length != 0"
+            ng-click="g.showConfirmDeleteFavs()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content class="gallery-wrapper" >
+    <div class="spacer"></div>
+
+    <div class="no-items-msg" ng-show="g.model.artworks.length === 0">This gallery has no items.</div>
+
+    <div class="gallery-thumbnail" ng-repeat="art in g.model.artworks">
+      <a on-hold="g.onHold({{ ::art.record_id }})" on-tap="g.onTap({{ ::art.record_id }})">
+        <img ng-src="{{ ::art.image_url }}">
+      </a>
+    </div>
+
+    <ion-infinite-scroll
+      ng-if="g.model.moreDataCanBeLoaded"
+      icon="ion-loading-c"
+      on-infinite="g.loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+
+  <div class="spacer"></div>
+</ion-view>
+
+
+
+
+
+<!-- <ion-content class="gallery-wrapper" >
+
+   <div class="spacer"></div>
+
+   <div class="no-items-msg" ng-show="artworks.length === 0">Your favorites gallery has no items.</div>
+-->
+<!--    <div class="gallery-thumbnail" ng-repeat="art in artworks">
+             <a href="#/tab/gallery/{{art.record_id}}"><img ng-src="{{art.image_url}}" ></a>
+      <h2 class="padding-top">{{art.title}}</h2>
+              <div id="circle" ng-click="toggleFab(art.record_id)"
+                 ng-class="{ 'md-primary': isFavorite, 'md-accent': !isFavorite}">
+        <i class="icon ion-star"></i>
+      </div>
+    </div>-->

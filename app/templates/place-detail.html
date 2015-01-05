@@ -1,0 +1,69 @@
+<ion-view title="Details" class="place-details" >
+  <ion-content>
+
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{::p.place.marker}}">
+        <h2>{{::p.place.name}}</h2>
+        <p>
+          <span ng-show="p.place.vicinity">{{::p.place.vicinity}}</span><br>
+          <span ng-show="p.place.formatted_phone_number">{{::p.place.formatted_phone_number}}</span><br>
+          <span class="italic" ng-show="p.place.opening_hours">
+            <strong>{{::p.place.opening_hours.open_now ? "Open" : "Closed"}}</strong>
+          </span>
+        </p>
+      </div>
+
+      <div class="item item-divider details-image">
+        <img ng-if="p.place.photos && p.place.photos.length >0"
+             ng-src="{{::p.place.photos[0].getUrl({'maxWidth': 350, 'maxHeight': 350})}}">
+
+        <button ng-if="p.place.website" class="button button-clear button-royal"
+                ng-click="p.openWebsite( m.place.website )">
+          {{::p.place.website}}
+        </button>
+      </div>
+
+      <div class="item item-body content" ng-if="p.place.opening_hours">
+
+       <p class="padding-bottom" ng-show="p.place.opening_hours && p.place.opening_hours.weekday_text">
+          <span ng-repeat="openHours in ::p.place.opening_hours.weekday_text">
+            <strong ng-show="$first">Hours:&nbsp;&nbsp;&nbsp;</strong>
+            <span ng-class="{indent:!$first}">{{openHours}}<br></span>
+          </span>
+        </p>
+
+      </div>
+
+      <div class="item item-divider">
+        <table>
+          <tr>
+            <td><strong>Location:</strong></td>
+            <td ng-show="p.place.vicinity">{{::p.place.vicinity}}</td>
+          </tr>
+        </table>
+        <map on-create="mapCreated(map)" map-options="mapOptions" data-tap-disabled="true"></map>
+      </div>
+
+      <div class="item item-body content">
+        <p ng-show="p.place.user_ratings_total"><strong>Overall Rating:&nbsp;&nbsp;&nbsp;</strong>{{::p.place.user_ratings_total}}</p>
+
+        <p ng-show="p.place.reviews && p.place.reviews.length > 0"><strong>Recent Reviews&nbsp;&nbsp;&nbsp;</strong></p>
+
+        <div ng-if="p.place.reviews && p.place.reviews.length > 0" ng-repeat="review in ::p.place.reviews">
+          <p>
+            <span ng-show="review.author_name && review.text !== ''" class="italic"><strong>{{::review.author_name}}</strong></span> -
+            <span ng-show="review.text !== ''">{{::review.text}}</span>
+          </p>
+        </div>
+      </div>
+
+     </div>
+
+    <div class="spacer"></div>
+
+  </ion-content>
+</ion-view>
+
+

@@ -1,0 +1,40 @@
+<ion-view title="Pdx Art Nearby">
+  <ion-content>
+<!--    <ion-list>
+      <ion-item class="item-icon-right item-thumbnail-left" ng-repeat="art in artworks" type="item-text-wrap" href="#/tab/art/{{art.record_id}}">
+        <img class="list-thumbnail" ng-src="{{art.image_url}}">
+        <h2 class="padding-top">{{art.title}}</h2>
+        <p ng-show="art.artist">{{art.artist}}</p>
+        <p ng-show="art.distance">{{art.distance}} miles</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>-->
+
+
+      <div class="list">
+        <a class="item art-list-item item-thumbnail-left item-icon-right"
+           collection-repeat="art in list.artworks"
+           collection-item-height="100"
+           collection-item-width="'100%'"
+           ui-sref="tab.list-detail({id:art.record_id})">
+          <img class="list-thumbnail" ng-src="{{art.image_url}}">
+
+          <div class="list-details">
+          <h2>{{art.title}}</h2>
+          <p ng-show="art.artist">{{art.artist}}<br>
+          <span ng-show="art.distance">{{art.distance}} miles</span>
+          </p>
+          </div>
+
+          <i class="icon ion-chevron-right icon-accessory"></i>
+
+
+        </a>
+      </div>
+
+
+
+
+
+  </ion-content>
+</ion-view>
